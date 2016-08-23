@@ -1,6 +1,7 @@
 package com.nakva.maps1;
 
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -50,6 +52,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_action_marker))
         );
 
+        LatLng point2 = new LatLng(22.130851, -100.923392);
+
+        mMap.addPolyline(new PolylineOptions().add(
+                point, point2
+        ).width(10).color(Color.CYAN)
+        );
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point, 19));
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
